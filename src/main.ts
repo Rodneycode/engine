@@ -1,4 +1,5 @@
 import KeyControls from '../lib/KeyControls';
+import MouseControls from '../lib/MouseControls';
 
 const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
@@ -17,6 +18,7 @@ let p1 = 0;
 let p2 = 0;
 
 const controls = new KeyControls();
+const mouse = new MouseControls(canvas);
 
 function loopy(ms: number) {
   requestAnimationFrame(loopy);
