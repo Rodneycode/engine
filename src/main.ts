@@ -1,10 +1,10 @@
-import KeyControls from '../lib/KeyControls';
-import MouseControls from '../lib/MouseControls';
+import lib from '../lib/index';
 
-const canvas = <HTMLCanvasElement>document.getElementById('canvas');
-const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
-const {width: w, height: h} = canvas;
+const {KeyControls, MouseControls, Container} = lib;
 
+const canvas = <HTMLCanvasElement>document.getElementById("canvas");
+const ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
+const { width: w, height: h } = canvas;
 
 // game setup code
 ctx.fillStyle = "#000";
@@ -19,6 +19,8 @@ let p2 = 0;
 
 const controls = new KeyControls();
 const mouse = new MouseControls(canvas);
+const scene = new Container();
+
 
 function loopy(ms: number) {
   requestAnimationFrame(loopy);
