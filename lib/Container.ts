@@ -4,6 +4,7 @@ export interface IContainer {
     y: number;
   };
   children: Array<any>;
+  visible?: boolean;
 
   add(child: any): any;
 
@@ -18,6 +19,7 @@ class Container implements IContainer {
     y: number;
   };
   children: Array<any>;
+  visible?: boolean;
 
   constructor() {
     this.pos = {
