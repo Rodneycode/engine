@@ -28,15 +28,23 @@ class CanvasRenderer implements ICanvasRenderer {
 
     // Render the container children
     function renderRec(container: IContainer): void {
-      container.children.forEach((child: any) => {
+      container.children.forEach((child: any) => { // TODO: typing for child
         // Draw the leaf node
-
         if (child.pos) {
           ctx.translate(Math.round(child.pos.x), Math.round(child.pos.y));
         }
 
-        // Handle the child types
+        // Draw text node
+        if(child.text) {
+          const {font, fill, align} = child.style;
+          if(font) ctx.font = font;
+          if(fill) ctx.fillStyle = fill;
+          if(align) ctx.textAlign = align;
 
+          ctx.fillText(child.text, 0, 0);
+        }
+
+        // Handle the child types
         if (child.children) {
           renderRec(child);
         }
