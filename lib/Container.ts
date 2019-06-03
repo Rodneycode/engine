@@ -1,8 +1,7 @@
+import { ICoords } from "./Interfaces";
+
 export interface IContainer {
-  pos: {
-    x: number;
-    y: number;
-  };
+  pos: ICoords;
   children: Array<any>;
   visible?: boolean;
 
@@ -14,10 +13,7 @@ export interface IContainer {
 }
 
 class Container implements IContainer {
-  pos: {
-    x: number;
-    y: number;
-  };
+  pos: ICoords;
   children: Array<any>;
   visible?: boolean;
 
@@ -28,24 +24,27 @@ class Container implements IContainer {
     };
 
     this.children = [];
+    this.visible = true;
   }
 
   // methods
-  add = (child: any): any => {
+  add = (child: any): any => { // todo: typing child
     this.children.push(child);
     return child;
   };
 
-  remove = (child: any): any => {
+  remove = (child: any): any => { // todo: typing child
     this.children = this.children.filter((item: any) => child !== item);
     return child;
   };
 
   update(dt: number, t: number): void {
-    this.children.forEach((child: any) => {
+    this.children = this.children.filter((child: any) => { // todo: typing child
       if (child.update) {
         child.update(dt, t);
       }
+
+      return !child.dead;
     });
   }
 }

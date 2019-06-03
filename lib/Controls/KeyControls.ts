@@ -18,7 +18,8 @@ enum keys {
   A = 65,
   D = 68,
   S = 83,
-  W = 87
+  W = 87,
+  SPACE = 32
 }
 
 class KeyControls implements IKeyControls {
@@ -31,13 +32,13 @@ class KeyControls implements IKeyControls {
 
     // Bind event handlers
     document.addEventListener('keydown', ({which}: KeyboardEvent) => {
-      if ([37, 38, 39, 40, 65, 68, 83, 87].indexOf(which) >= 0) {
+      if ([32, 37, 38, 39, 40, 65, 68, 83, 87].indexOf(which) >= 0) {
         this.keys[which] = true;
         console.log(this.keys[which])
       }
     }, false);
     document.addEventListener('keyup', ({which}: KeyboardEvent) => {
-      if ([37, 38, 39, 40, 65, 68, 83, 87].indexOf(which) >= 0) {
+      if ([32, 37, 38, 39, 40, 65, 68, 83, 87].indexOf(which) >= 0) {
         this.keys[which] = false;
       }
     }, false);
@@ -57,6 +58,10 @@ class KeyControls implements IKeyControls {
   }
 
   // Handle key actions
+  get action(): boolean {
+    return this.keys[32];
+  }
+
   get x(): number {
     // left arrow or A key
     if (this.keys[keys.LEFT] || this.keys[keys.A]) {
