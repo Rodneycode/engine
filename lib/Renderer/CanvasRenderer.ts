@@ -32,7 +32,7 @@ class CanvasRenderer implements ICanvasRenderer {
       container.children.forEach((child: any) => {
         // TODO: typing for child
         // check if child is vissible and skip it if so
-        if (!child.visisible) return;
+        if (!child.visible) return;
 
         ctx.save();
 
@@ -43,6 +43,7 @@ class CanvasRenderer implements ICanvasRenderer {
 
         // Draw text node
         if (child.text) {
+          debugger;
           const { font, fill, align } = child.style;
           if (font) ctx.font = font;
           if (fill) ctx.fillStyle = fill;

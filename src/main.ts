@@ -12,11 +12,21 @@ document.getElementById("board").appendChild(renderer.view);
 const scene = new Container();
 const message = new TextNode("Hello world canvas", {
   font: "40pt sans-serif",
-  fill: "darkred",
+  fill: "red",
   align: "center"
 });
 message.pos.x = w / 2;
 message.pos.y = h / 2 - 20;
+message.visible = true;
+scene.visible = true;
+message.update = function(dt) {
+  if (this.pos.x <= -420) {
+    this.pos.x += 100 * dt;
+  } else if(this.pos.x ) {
+    this.pos.x -= 100 * dt;
+  }
+  console.log(dt * 100)
+};
 
 scene.add(message);
 

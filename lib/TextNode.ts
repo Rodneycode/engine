@@ -12,6 +12,8 @@ export interface ITextNode {
   }
   text: string;
   style: IStyle;
+  visible?: boolean;
+  update?(dt?: number, t?: number): void
 }
 
 
@@ -23,6 +25,8 @@ class TextNode implements ITextNode {
   };
   text: string;
   style: IStyle;
+  visible?: boolean;
+  update?(dt?: number, t?: number): void;
 
   constructor(text: string = '', style: IStyle = {}) {
     this.pos = {
