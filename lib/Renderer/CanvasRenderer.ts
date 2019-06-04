@@ -1,13 +1,4 @@
-import { IContainer } from "../Container";
-
-interface ICanvasRenderer {
-  w: number;
-  h: number;
-  view: HTMLCanvasElement;
-  ctx: CanvasRenderingContext2D;
-
-  render(container: IContainer): void;
-}
+import {ICanvasRenderer, IContainer, ISprite, ITextNode} from "../Interfaces";
 
 class CanvasRenderer implements ICanvasRenderer {
   w: number;

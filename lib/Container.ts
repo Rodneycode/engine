@@ -1,16 +1,6 @@
-import { ICoords } from "./Interfaces";
+import {ICallBack, IContainer, ICoords, ISprite, ITextNode} from "./Interfaces";
 
-export interface IContainer {
-  pos: ICoords;
-  children: Array<any>;
-  visible?: boolean;
 
-  add(child: any): any;
-
-  remove(child: any): any;
-
-  update(dt: number, t: number): void;
-}
 
 class Container implements IContainer {
   pos: ICoords;
@@ -28,24 +18,28 @@ class Container implements IContainer {
   }
 
   // methods
-  add = (child: any): any => { // todo: typing child
+  add = (child: ITextNode | ISprite | IContainer): ITextNode | ISprite | IContainer => { // todo: typing child
     this.children.push(child);
     return child;
   };
 
-  remove = (child: any): any => { // todo: typing child
-    this.children = this.children.filter((item: any) => child !== item);
+  remove = (child: ITextNode | ISprite | IContainer): ITextNode | ISprite | IContainer => { // todo: typing child
+    this.children = this.children.filter((item: ITextNode | ISprite | IContainer) => child !== item);
     return child;
   };
 
   update(dt: number, t: number): void {
-    this.children = this.children.filter((child: any) => { // todo: typing child
+    this.children = this.children.filter((child: ITextNode | ISprite | IContainer) => { // todo: typing child
       if (child.update) {
         child.update(dt, t);
       }
 
       return !child.dead;
     });
+  }
+
+  map(f: ICallBack): Array<any> { // todo: typing
+    return this.children.map(f);
   }
 }
 

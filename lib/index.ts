@@ -5,6 +5,7 @@ import CanvasRenderer from "./Renderer/CanvasRenderer";
 import TextNode from "./TextNode";
 import Texture from "./Texture";
 import Sprite from "./Sprite";
+import Game from './Game';
 
 export default {
   KeyControls,
@@ -13,5 +14,6 @@ export default {
   CanvasRenderer,
   TextNode,
   Texture,
-  Sprite
+  Sprite,
+  Game
 };

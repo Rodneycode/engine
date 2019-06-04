@@ -11,18 +11,15 @@ const {
   CanvasRenderer,
   TextNode,
   Texture,
-  Sprite
+  Sprite,
+  Game
 } = lib;
 
-// game setup code
-const w = 640;
-const h = 300;
-const renderer = new CanvasRenderer(w, h);
-const board = document.getElementById("board");
-board && board.appendChild(renderer.view);
+const game = new Game(640, 300);
+const { scene, w, h } = game;
 
 // game objects
-const scene = new Container();
+//const scene = new Container();
 const textures = {
   ship: new Texture(shipImg),
   bg: new Texture(bgImg),
@@ -118,17 +115,8 @@ scene.add(bullets);
 scene.add(enemies);
 scene.add(score);
 
-// LOOPY
-let dt = 0;
-let last = 0;
-
-function loopy(ms: number) {
-  requestAnimationFrame(loopy);
-
-  const t = ms / 1000;
-  dt = t - last;
-  last = t;
-
+// RUN GAME
+game.run((dt, t) => {
   // game logic code
   if (!gameOver && controls.action && t - lastShot > 0.15) {
     lastShot = t;
@@ -174,9 +162,4 @@ function loopy(ms: number) {
     // Accelerating for the next spawn
     enemySpeed = enemySpeed < 0.05 ? 0.6 : enemySpeed * 0.97 + 0.001;
   }
-
-  scene.update(dt, t);
-  renderer.render(scene);
-}
-
-requestAnimationFrame(loopy);
+});
