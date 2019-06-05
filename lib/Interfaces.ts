@@ -32,6 +32,10 @@ export interface ISprite {
   pos: ICoords;
   visible: boolean;
   dead: boolean;
+  scale: ICoords;
+  anchor: ICoords;
+  pivot: ICoords;
+  rotation: number;
 
   update(dt?: number, t?: number): void;
 }
@@ -45,7 +49,7 @@ export interface IContainer {
   add(child: any): any;
   remove(child: any): any;
   update(dt: number, t: number): void;
-  map(f: ICallBack): Array<any>
+  map(f: any): Array<any>
 }
 
 export interface ICanvasRenderer {

@@ -1,4 +1,4 @@
-import { ITexture } from "./Interfaces";
+import { ITexture } from "../Interfaces";
 
 class Texture implements ITexture {
   img: HTMLImageElement;

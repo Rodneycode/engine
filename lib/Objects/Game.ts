@@ -1,6 +1,6 @@
 import Container from './Container';
-import CanvasRenderer from './Renderer/CanvasRenderer';
-import {ICanvasRenderer, IContainer, IGame} from "./Interfaces";
+import CanvasRenderer from '../Renderer/CanvasRenderer';
+import {ICanvasRenderer, IContainer, IGame} from "../Interfaces";
 
 const STEP = 1 / 60;
 const MAX_FRAME = STEP * 5;

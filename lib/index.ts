@@ -1,11 +1,11 @@
 import KeyControls from "./Controls/KeyControls";
 import MouseControls from "./Controls/MouseControls";
-import Container from "./Container";
+import Container from "./Objects/Container";
 import CanvasRenderer from "./Renderer/CanvasRenderer";
-import TextNode from "./TextNode";
-import Texture from "./Texture";
-import Sprite from "./Sprite";
-import Game from './Game';
+import TextNode from "./Objects/TextNode";
+import Texture from "./Objects/Texture";
+import Sprite from "./Objects/Sprite";
+import Game from './Objects/Game';
 
 export default {
   KeyControls,

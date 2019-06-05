@@ -1,4 +1,4 @@
-import {ICanvasRenderer, IContainer, ISprite, ITextNode} from "../Interfaces";
+import { ICanvasRenderer, IContainer, ISprite, ITextNode } from "../Interfaces";
 
 class CanvasRenderer implements ICanvasRenderer {
   w: number;
@@ -30,6 +30,26 @@ class CanvasRenderer implements ICanvasRenderer {
         // Draw the leaf node
         if (child.pos) {
           ctx.translate(Math.round(child.pos.x), Math.round(child.pos.y));
+        }
+
+        // revert image
+        if (child.anchor) {
+          ctx.translate(child.anchor.x, child.anchor.y);
+        }
+
+        // rotation
+        if (child.rotation) {
+          const px = child.pivot ? child.pivot.x : 0;
+          const py = child.pivot ? child.pivot.y : 0;
+          ctx.translate(px, py);
+          ctx.rotate(child.rotation);
+          ctx.translate(-px, -py);
+        }
+
+        // Scale
+        if (child.scale) {
+          debugger;
+          ctx.scale(child.scale.x, child.scale.y);
         }
 
         // Draw text node

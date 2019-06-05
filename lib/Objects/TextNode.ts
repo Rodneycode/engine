@@ -1,5 +1,5 @@
 // Interfaces
-import { ICoords, IStyle, ITextNode } from "./Interfaces";
+import { ICoords, IStyle, ITextNode } from "../Interfaces";
 
 // class implementation. TextNode
 class TextNode implements ITextNode {
