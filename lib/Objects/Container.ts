@@ -1,4 +1,4 @@
-import {ICallBack, IContainer, ICoords, ISprite, ITextNode} from "../Interfaces";
+import {IContainer, ICoords} from "../Interfaces";
 
 class Container implements IContainer {
   pos: ICoords;
@@ -16,12 +16,12 @@ class Container implements IContainer {
   }
 
   // methods
-  add = (child: any): any => { // todo: typing child
+  add = <T>(child: T): T => { // todo: typing child
     this.children.push(child);
     return child;
   };
 
-  remove = (child: any): any => { // todo: typing child
+  remove = <T>(child: T): T => { // todo: typing child
     this.children = this.children.filter((item: any) => child !== item);
     return child;
   };

@@ -1,3 +1,5 @@
+import {ICoords} from "../Interfaces";
+
 function rand(min: number, max?: number): number {
   return Math.floor(randf(min, max));
 }
@@ -18,9 +20,16 @@ function randOneFrom(items: [any]): any {
   return items[rand(items.length)];
 }
 
+function distance (a: ICoords, b: ICoords) {
+  const dx = a.x - b.x;
+  const dy = a.y - b.y;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
 export {
   rand,
   randf,
   randOneIn,
-  randOneFrom
+  randOneFrom,
+  distance
 };

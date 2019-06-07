@@ -6,6 +6,7 @@ import TextNode from "./Objects/TextNode";
 import Texture from "./Objects/Texture";
 import Sprite from "./Objects/Sprite";
 import Game from './Objects/Game';
+import TileSprite from './Objects/TileSprite';
 
 export default {
   KeyControls,
@@ -15,5 +16,6 @@ export default {
   TextNode,
   Texture,
   Sprite,
+  TileSprite,
   Game
 };

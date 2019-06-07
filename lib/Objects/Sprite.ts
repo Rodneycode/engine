@@ -33,7 +33,7 @@ class Sprite implements ISprite {
     this.rotation = 0;
   }
 
-  update = (dt?: number, t?: number): void => {};
+  update = (dt: number, t: number): void => {};
 }
 
 export default Sprite;

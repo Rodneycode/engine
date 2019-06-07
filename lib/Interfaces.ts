@@ -37,7 +37,14 @@ export interface ISprite {
   pivot: ICoords;
   rotation: number;
 
-  update(dt?: number, t?: number): void;
+  update(dt: number, t: number): void;
+}
+
+export interface ITileSprite extends ISprite {
+  tileW: number;
+  tileH: number;
+  frame: ICoords;
+  anims: IAnimManager;
 }
 
 export interface IContainer {
@@ -49,7 +56,7 @@ export interface IContainer {
   add(child: any): any;
   remove(child: any): any;
   update(dt: number, t: number): void;
-  map(f: any): Array<any>
+  map(f: any): Array<any>;
 }
 
 export interface ICanvasRenderer {
@@ -68,4 +75,25 @@ export interface IGame {
   scene: IContainer;
 
   run(): void;
+}
+
+export interface IAnim {
+  frames: Array<ICoords>;
+  rate: number;
+  frame: ICoords;
+  curFrame: number;
+  curTime: number;
+  reset(): void;
+  update(dt: number): void;
+}
+
+export interface IAnimManager {
+  running: boolean;
+  frameSource: ICoords;
+  current: string | null;
+  anims: any;
+  add(name: string, frames: Array<ICoords>, speed: number): IAnim;
+  update(dt: number): void;
+  play(anim: string): void;
+  stop(): void;
 }
