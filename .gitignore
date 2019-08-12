@@ -1,0 +1,4 @@
+# ignored
+.idea/
+node_modules/
+/workspace.xml
